@@ -3,26 +3,78 @@
   text-align: left;
 }
 
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.app-header > div {
+  flex: 1;
+  text-align: left;
+}
+
+.theme-toggle {
+  font: inherit;
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+  white-space: nowrap;
+}
+
+.theme-toggle:hover {
+  background: var(--code-bg);
+  border-color: var(--accent-border);
+}
+
+.app-title {
+  margin: 0;
+  font-size: 28px;
+  letter-spacing: -0.5px;
+}
+
+.app-subtitle {
+  margin: 4px 0 20px;
+  color: var(--text);
+  font-size: 15px;
+}
+
 .nav {
   display: flex;
   gap: 8px;
-  border-bottom: 1px solid var(--border);
   margin-bottom: 24px;
 }
 
-.nav button {
-  background: transparent;
-  border: none;
-  padding: 10px 16px;
+.nav a {
+  display: inline-block;
+  padding: 8px 16px;
   font: inherit;
-  color: var(--text);
+  font-size: 15px;
+  color: var(--text-h);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg);
   cursor: pointer;
-  border-bottom: 2px solid transparent;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
 }
 
-.nav button.active {
-  color: var(--text-h);
-  border-bottom-color: var(--accent);
+.nav a:hover {
+  background: var(--code-bg);
+  border-color: var(--accent-border);
+}
+
+.nav a.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
 }
 
 .view-header {
@@ -114,7 +166,8 @@
   color: var(--text-h);
 }
 
-.form input {
+.form input,
+.form select {
   font: inherit;
   padding: 8px 10px;
   border-radius: 6px;
@@ -123,13 +176,71 @@
   color: var(--text-h);
 }
 
-.form input:focus {
+.form input:focus,
+.form select:focus {
   outline: 2px solid var(--accent);
   outline-offset: 1px;
+}
+
+.form label.checkbox {
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.form label.checkbox input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
 .form-actions {
   display: flex;
   gap: 8px;
   justify-content: flex-end;
+}
+
+.loading {
+  padding: 24px 0;
+  color: var(--text);
+  font-style: italic;
+}
+
+.status {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.controller {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  white-space: nowrap;
+}
+:root[data-theme='dark'] .btn.danger {
+  color: #ff6b6b;
+  border-color: rgba(255, 107, 107, 0.4);
+}
+
+:root[data-theme='dark'] .btn.danger:hover {
+  background: rgba(255, 107, 107, 0.1);
+  border-color: #ff6b6b;
+}
+
+:root[data-theme='dark'] .controller.yes {
+  color: #4ade80;
+}
+
+:root[data-theme='dark'] .controller.no {
+  color: #999;
 }

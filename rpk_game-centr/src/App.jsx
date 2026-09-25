@@ -1,35 +1,43 @@
-import { useState } from 'react';
-import EmployeeList from './views/EmployeeList';
-import EmployeeForm from './views/EmployeeForm';
+import { Routes, Route, NavLink } from 'react-router-dom';
+import GameList from './views/GameList';
+import GameForm from './views/GameForm';
+import { useTheme } from './useTheme';
 import './App.css';
 
 function App() {
-  const [view, setView] = useState('list');
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="app">
+      <header className="app-header">
+        <div>
+          <h1 className="app-title">Game Store</h1>
+          <p className="app-subtitle">Каталог игр и управление товарами</p>
+        </div>
+        <button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          title="Переключить тему"
+        >
+          {theme === 'dark' ? 'Светлая' : 'Тёмная'}
+        </button>
+      </header>
+
       <nav className="nav">
-        <button
-          type="button"
-          className={view === 'list' ? 'active' : ''}
-          onClick={() => setView('list')}
-        >
-          Список
-        </button>
-        <button
-          type="button"
-          className={view === 'form' ? 'active' : ''}
-          onClick={() => setView('form')}
-        >
-          Добавить
-        </button>
+        <NavLink to="/" end className={({ isActive }) => (isActive ? 'active' : '')}>
+          Каталог
+        </NavLink>
+        <NavLink to="/add" className={({ isActive }) => (isActive ? 'active' : '')}>
+          Добавить игру
+        </NavLink>
       </nav>
 
-      {view === 'list' ? (
-        <EmployeeList onAdd={() => setView('form')} />
-      ) : (
-        <EmployeeForm onSave={() => setView('list')} onCancel={() => setView('list')} />
-      )}
+      <Routes>
+        <Route path="/" element={<GameList />} />
+        <Route path="/add" element={<GameForm />} />
+        <Route path="*" element={<GameList />} />
+      </Routes>
     </div>
   );
 }
