@@ -1,5 +1,4 @@
 :root {
-  /* Светлая тема (по умолчанию) */
   --text: #6b6375;
   --text-h: #08060d;
   --bg: #ffffff;
@@ -31,7 +30,6 @@
   }
 }
 
-/* Тёмная тема — включается через data-theme="dark" на <html> */
 :root[data-theme='dark'] {
   --text: #b8b8c0;
   --text-h: #ffffff;

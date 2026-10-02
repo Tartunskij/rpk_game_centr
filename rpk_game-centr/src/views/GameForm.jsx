@@ -39,7 +39,6 @@ function GameForm() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Например, GTA VI"
           />
         </label>
 
@@ -61,7 +60,6 @@ function GameForm() {
             step="0.01"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
-            placeholder="29.99"
           />
         </label>
 
