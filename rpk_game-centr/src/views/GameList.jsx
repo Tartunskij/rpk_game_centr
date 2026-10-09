@@ -27,8 +27,7 @@ function GameList() {
   }, []);
 
   const handleDelete = (id) => {
-    GameAPI.delete(id);
-    setGames(GameAPI.all());
+  setGames(GameAPI.delete(id));
   };
 
   if (loading) {

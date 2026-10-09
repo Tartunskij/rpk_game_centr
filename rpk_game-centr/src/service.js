@@ -15,8 +15,8 @@ const GameAPI = {
     return this.games.find((g) => g.id === id);
   },
   delete: function (id) {
-    this.games = this.games.filter((g) => g.id !== id);
-    return true;
+  this.games = this.games.filter((g) => g.id !== id);
+  return this.games;
   },
   add: function (game) {
     if (!game.id) {
