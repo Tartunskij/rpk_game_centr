@@ -204,7 +204,120 @@
   gap: 8px;
   justify-content: flex-end;
 }
+/* Панель фильтров — спокойная, без яркого фона */
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--border);
+}
 
+/* Поиск занимает оставшееся место */
+.filters__search {
+  flex: 1 1 240px;
+  min-width: 200px;
+  font: inherit;
+  font-size: 14px;
+  padding: 8px 12px 8px 34px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--text-h);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
+  background-repeat: no-repeat;
+  background-position: 12px center;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.filters__search::placeholder {
+  color: var(--text);
+  opacity: 0.7;
+}
+
+.filters__search:hover {
+  border-color: var(--accent-border);
+}
+
+.filters__search:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* Выпадающие списки — без рамки, только текст + стрелка */
+.filters__select {
+  font: inherit;
+  font-size: 14px;
+  padding: 8px 28px 8px 12px;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.filters__select:hover {
+  background-color: var(--code-bg);
+  color: var(--text-h);
+}
+
+.filters__select:focus {
+  outline: none;
+  border-color: var(--accent);
+  background-color: var(--bg);
+}
+
+/* Чекбокс — компактный */
+.filters__checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  color: var(--text);
+  cursor: pointer;
+  padding: 8px 4px;
+  user-select: none;
+  transition: color 0.15s;
+}
+
+.filters__checkbox:hover {
+  color: var(--text-h);
+}
+
+.filters__checkbox input[type='checkbox'] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  margin: 0;
+}
+
+.filters .btn {
+  font-size: 13px;
+  padding: 7px 12px;
+  border-color: transparent;
+  background: transparent;
+  color: var(--text);
+}
+
+.filters .btn:hover {
+  background: var(--code-bg);
+  color: var(--text-h);
+}
+
+.filters__divider {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  margin: 0 4px;
+}
 .loading {
   padding: 24px 0;
   color: var(--text);
