@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
 import GameAPI, { CURRENCY } from '../service';
 import {
   setSearch,
@@ -14,7 +13,6 @@ import {
 function GameList() {
   const [games, setGames] = useState([]);
   const [loading, setLoading] = useState(true);
-  const navigate = useNavigate();
 
   const dispatch = useDispatch();
   const filters = useSelector((state) => state.filters);
@@ -68,13 +66,7 @@ function GameList() {
     <div className="view">
       <header className="view-header">
         <h1>Каталог игр</h1>
-        <button
-          type="button"
-          className="btn primary"
-          onClick={() => navigate('/add')}
-        >
-          + Добавить игру
-        </button>
+        {/* Кнопка "+ Добавить игру" убрана отсюда */}
       </header>
 
       <div className="filters">
@@ -123,7 +115,7 @@ function GameList() {
             checked={filters.onlyWithController}
             onChange={() => dispatch(toggleControllerFilter())}
           />
-          Можно использовать контроллер
+          Контроллер
         </label>
 
         <button

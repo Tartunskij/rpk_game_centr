@@ -1,11 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import filtersReducer from './filtersSlice';
-import cartReducer from './cartSlice';
+import wishlistsReducer from './wishlistsSlice';
+import wishlistItemsReducer from './wishlistItemsSlice';
 
 export const store = configureStore({
   reducer: {
     filters: filtersReducer,
-    cart: cartReducer,
+    wishlists: wishlistsReducer,
+    wishlistItems: wishlistItemsReducer,
+    // cart: cartReducer,
   },
 });
 

@@ -204,7 +204,7 @@
   gap: 8px;
   justify-content: flex-end;
 }
-/* Панель фильтров — спокойная, без яркого фона */
+
 .filters {
   display: flex;
   flex-wrap: wrap;
@@ -215,22 +215,19 @@
   border-bottom: 1px solid var(--border);
 }
 
-/* Поиск занимает оставшееся место */
 .filters__search {
   flex: 1 1 240px;
   min-width: 200px;
   font: inherit;
   font-size: 14px;
-  padding: 8px 12px 8px 34px;
+  padding: 8px 12px;
   border-radius: 20px;
   border: 1px solid var(--border);
   background: var(--bg);
   color: var(--text-h);
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><line x1='21' y1='21' x2='16.65' y2='16.65'/></svg>");
-  background-repeat: no-repeat;
-  background-position: 12px center;
   transition: border-color 0.15s, background-color 0.15s;
 }
+
 
 .filters__search::placeholder {
   color: var(--text);
@@ -246,7 +243,6 @@
   border-color: var(--accent);
 }
 
-/* Выпадающие списки — без рамки, только текст + стрелка */
 .filters__select {
   font: inherit;
   font-size: 14px;
@@ -274,7 +270,6 @@
   background-color: var(--bg);
 }
 
-/* Чекбокс — компактный */
 .filters__checkbox {
   display: inline-flex;
   align-items: center;
@@ -356,4 +351,14 @@
 
 :root[data-theme='dark'] .controller.no {
   color: #999;
+}
+.link {
+  color: inherit;        
+  text-decoration: none; 
+  transition: color 0.15s ease; 
+}
+
+.link:hover {
+  color: var(--accent); 
+  text-decoration: underline;
 }
