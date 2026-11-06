@@ -32,7 +32,7 @@ function WishlistForm() {
             type="text"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
-            placeholder="Например, Хочу на ДР"
+            placeholder=""
           />
         </label>
 

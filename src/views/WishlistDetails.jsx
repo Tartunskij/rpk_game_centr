@@ -68,6 +68,6 @@ function WishlistDetails() {
       </table>
     </div>
   );
-}
+} 
 
 export default WishlistDetails;
