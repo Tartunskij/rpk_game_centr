@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import GameAPI, { CURRENCY } from '../service';
 import {
   setSearch,
@@ -36,8 +37,11 @@ function GameList() {
     };
   }, []);
 
-  const handleDelete = (id) => {
-    setGames(GameAPI.delete(id));
+  const handleDelete = (id, title) => {
+    const ok = window.confirm(`Удалить игру «${title}»?`);
+    if (ok) {
+      setGames(GameAPI.delete(id));
+    }
   };
 
   const visibleGames = games
@@ -66,7 +70,6 @@ function GameList() {
     <div className="view">
       <header className="view-header">
         <h1>Каталог игр</h1>
-        {/* Кнопка "+ Добавить игру" убрана отсюда */}
       </header>
 
       <div className="filters">
@@ -166,13 +169,22 @@ function GameList() {
                 )}
               </td>
               <td>
-                <button
-                  type="button"
-                  className="btn danger"
-                  onClick={() => handleDelete(game.id)}
-                >
-                  Удалить
-                </button>
+                <div style={{ display: 'flex', gap: '6px' }}>
+                  <NavLink
+                    to={`/edit/${game.id}`}
+                    className="btn"
+                    style={{ textDecoration: 'none' }}
+                  >
+                    Изменить
+                  </NavLink>
+                  <button
+                    type="button"
+                    className="btn danger"
+                    onClick={() => handleDelete(game.id, game.title)}
+                  >
+                    Удалить
+                  </button>
+                </div>
               </td>
             </tr>
           ))}

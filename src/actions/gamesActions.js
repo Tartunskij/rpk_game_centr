@@ -1,4 +1,3 @@
-// src/actions/gamesActions.js
 import { createSlice } from '@reduxjs/toolkit';
 import GameAPI from '../service';
 
@@ -10,7 +9,7 @@ const gamesActions = createSlice({
   name: 'games',
   initialState,
   reducers: {
-    
+
     addGame: (state, action) => {
       const maxId = state.items.reduce(
         (max, g) => (g.id > max ? g.id : max),

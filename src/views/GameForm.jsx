@@ -1,36 +1,59 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import GameAPI, { CURRENCY } from '../service';
 
 function GameForm() {
+  const { id } = useParams();
+  const isEdit = Boolean(id);
+
   const [title, setTitle] = useState('');
   const [platform, setPlatform] = useState('PC');
   const [price, setPrice] = useState('');
   const [status, setStatus] = useState('Доступна');
   const [controller, setController] = useState(false);
+
   const titleInputRef = useRef(null);
   const navigate = useNavigate();
 
+  // При редактировании — заполняем поля из GameAPI
   useEffect(() => {
+    if (isEdit) {
+      const game = GameAPI.get(Number(id));
+      if (game) {
+        setTitle(game.title);
+        setPlatform(game.platform);
+        setPrice(String(game.price));
+        setStatus(game.status);
+        setController(game.controller);
+      }
+    }
     titleInputRef.current?.focus();
-  }, []);
+  }, [id, isEdit]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!title.trim() || !price) return;
-    GameAPI.add({
+
+    const payload = {
       title: title.trim(),
       platform,
       price: Number(price),
       status,
       controller,
-    });
+    };
+
+    if (isEdit) {
+      GameAPI.update({ ...payload, id: Number(id) });
+    } else {
+      GameAPI.add(payload);
+    }
+
     navigate('/');
   };
 
   return (
     <div className="view">
-      <h1>Новая игра</h1>
+      <h1>{isEdit ? 'Редактировать игру' : 'Новая игра'}</h1>
       <form className="form" onSubmit={handleSubmit}>
         <label>
           Название
@@ -85,7 +108,7 @@ function GameForm() {
             Отмена
           </button>
           <button type="submit" className="btn primary">
-            Сохранить
+            {isEdit ? 'Сохранить изменения' : 'Сохранить'}
           </button>
         </div>
       </form>

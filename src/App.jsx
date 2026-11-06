@@ -8,7 +8,7 @@ import { useTheme } from './useTheme';
 import './App.css';
 
 function App() {
-  const { theme, toggleTheme } = useTheme(); // <-- Тема
+  const { theme, toggleTheme } = useTheme();
 
   return (
     <div className="app">
@@ -31,6 +31,7 @@ function App() {
       <Routes>
         <Route path="/" element={<GameList />} />
         <Route path="/add" element={<GameForm />} />
+        <Route path="/edit/:id" element={<GameForm />} />  
         <Route path="/wishlists" element={<WishlistList />} />
         <Route path="/add-wishlist" element={<WishlistForm />} />
         <Route path="/wishlists/:id" element={<WishlistDetails />} />
