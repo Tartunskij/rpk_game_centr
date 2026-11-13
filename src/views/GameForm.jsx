@@ -15,7 +15,6 @@ function GameForm() {
   const titleInputRef = useRef(null);
   const navigate = useNavigate();
 
-  // При редактировании — заполняем поля из GameAPI
   useEffect(() => {
     if (isEdit) {
       const game = GameAPI.get(Number(id));

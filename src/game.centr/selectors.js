@@ -11,5 +11,3 @@ export const selectGamesInWishlist = (state, wishlistId) =>
   state.wishlistItems.items
     .filter((item) => item.wishlistId === wishlistId)
     .map((item) => item.gameId);
-
-export const selectCart = (state) => state.cart;
